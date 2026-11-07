@@ -1,0 +1,19 @@
+[package]
+name = "wayfare"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# "unstable" exposes env::ecrecover (a standard NEAR host function), used to verify merchants' cancellation signatures
+near-sdk = { workspace = true, features = ["unstable"] }
+
+[dev-dependencies]
+near-sdk = { workspace = true, features = ["unit-testing", "unstable"] }
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = ['cfg(near)']
