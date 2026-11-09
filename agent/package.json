@@ -1,0 +1,38 @@
+{
+  "name": "wayfare-agent",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup:testnet": "tsx --env-file-if-exists=../.env scripts/setup-testnet.ts",
+    "pay:hotel": "tsx --env-file=../.env scripts/pay-hotel.ts",
+    "pay:real": "tsx --env-file=../.env scripts/pay-real-x402.ts",
+    "check": "tsc --noEmit",
+    "topup": "tsx --env-file=../.env scripts/topup-testnet.ts",
+    "chain": "tsx --env-file=../.env scripts/local-chain.ts",
+    "pay:trip": "tsx --env-file=../.env scripts/pay-trip.ts",
+    "trip": "tsx --env-file=../.env scripts/trip.ts",
+    "hub": "tsx --env-file=../.env src/hub.ts",
+    "mcp": "tsx src/mcp.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@near-js/crypto": "2.5.1",
+    "@near-js/transactions": "2.5.1",
+    "@near-js/utils": "1.1.0",
+    "@x402/core": "2.28.0",
+    "@x402/evm": "2.28.0",
+    "@x402/fetch": "2.28.0",
+    "@x402/near": "2.28.0",
+    "agent-browser": "0.39.2",
+    "bs58": "6.0.0",
+    "near-api-js": "5.1.1",
+    "openai": "6.10.0",
+    "viem": "2.21.55",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "tsx": "4.19.2",
+    "typescript": "5.7.2"
+  }
+}
