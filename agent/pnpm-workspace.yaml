@@ -1,0 +1,7 @@
+allowBuilds:
+  agent-browser: true
+  esbuild: true
+  secp256k1: false
+onlyBuiltDependencies:
+  - agent-browser
+  - esbuild
