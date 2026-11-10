@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+/* Sprout's design system (Amplemarket language): warm off-white page, white
+ * cards with hairline rings, Midnight Ink text and CTAs, pillar accents only
+ * for small status marks, one soft WebGL gradient glow behind everything. */
+@theme {
+  --color-midnight-ink: #111111;
+  --color-canvas: #f6f5f3;
+  --color-canvas-white: #ffffff;
+  --color-whisper-gray: #f4f3ef;
+  --color-light-taupe: #ecebea;
+  --color-muted-ash: #6d6c6b;
+  --color-surface-charcoal: #272625;
+  --color-deep-indigo: #10054d;
+  --color-midnight-violet: #2e2460;
+  --color-hairline: rgba(17, 17, 17, 0.05);
+
+  --color-deliver-green: #47d096; /* booked / signed / success */
+  --color-engagement-gold: #fbc768; /* working / pending */
+  --color-lead-gen-red: #e16540; /* refused / error */
+  --color-intelligence-blue: #328efa; /* info */
+
+  /* Wayfare's own accent: sky blue for actions; a sky → coral → peach sunset glow. */
+  --color-sky: #1769e0;
+  --color-sky-deep: #0f4fb0;
+  --color-glow-sky: #9ccfff;
+  --color-glow-coral: #ffb8a0;
+  --color-glow-peach: #ffe0bd;
+
+  --font-sans: var(--font-brand), "Labil Grotesk Variable", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono-brand), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.02em;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.45;
+  --text-body-sm--letter-spacing: 0.015em;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-body-lg: 20px;
+  --text-body-lg--line-height: 1.3;
+  --text-body-lg--letter-spacing: -0.01em;
+  --text-title: 32px;
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.02em;
+
+  --radius-card: 12px;
+  --radius-button: 8px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 12px;
+  --radius-xl: 12px;
+
+  --shadow-card: rgba(17, 17, 17, 0.02) 0 -6px 6px 0, rgba(17, 17, 17, 0.01) 0 -23px 9px 0;
+  --shadow-header: rgba(17, 17, 17, 0.05) 0 0 1px 0, rgba(17, 17, 17, 0.04) 1px 1px 1px 0, rgba(17, 17, 17, 0.03) 2px 3px 2px 0, rgba(17, 17, 17, 0.01) 4px 4px 2px 0;
+  --shadow-button: rgba(17, 17, 17, 0.04) 0 1px 2px 0, rgba(17, 17, 17, 0.04) 0 4px 8px 0;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(17, 17, 17, 0.18) transparent;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-midnight-ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  letter-spacing: inherit;
+}
+
+@utility font-alt {
+  font-variation-settings: "STBL" 0;
+  font-feature-settings: "ss02" on;
+}
+
+.display-tight {
+  letter-spacing: -0.04em;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Surfaces: page (L0) → white card (L1) → whisper-gray recess inside a card (L2). */
+.surface-card {
+  background: var(--color-canvas-white);
+  box-shadow: 0 0 0 1px var(--color-hairline), var(--shadow-card);
+}
+.surface-panel {
+  background: var(--color-whisper-gray);
+}
+.surface-charcoal {
+  background: var(--color-surface-charcoal);
+  color: var(--color-canvas-white);
+}
+
+/* Shimmer sweep on whatever the agent is working on right now. */
+@keyframes shimmer-sweep {
+  0% {
+    background-position: 150% 0;
+  }
+  100% {
+    background-position: -50% 0;
+  }
+}
+.shimmer-text {
+  background-image: linear-gradient(100deg, var(--color-muted-ash) 35%, var(--color-midnight-ink) 50%, var(--color-muted-ash) 65%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-sweep 1.6s linear infinite;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.live-dot {
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-text,
+  .live-dot {
+    animation: none;
+  }
+  .shimmer-text {
+    color: var(--color-muted-ash);
+  }
+}
