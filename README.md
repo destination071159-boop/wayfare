@@ -4,7 +4,7 @@
 
 NEAR Hackathon 2026 · Track: **Agent Economy**
 
-**Demo video (2:59):** _add link_ · **Try it without installing:** _add link_
+**Demo video (2:59):** _add link_ · **Try it without installing:** [wayfare.autos](https://wayfare.autos) (replay of 3 real trips)
 
 ## The problem
 
@@ -129,7 +129,7 @@ Optional settings in `wayfare/.env`:
 - **Run page** (`/run?id=`): the progress track; the agent's browser (screenshots as it searches, chooses, fills and pays); the activity feed; the plan with each choice's reason; **Approve & book**; each booking's confirmation, NEAR signature and settlement; **Kumo Air cancels the flight** (see below); **Let the agent try a pricier room** (the contract refuses); **End trip**. The *On NEAR* panel reads the contract: limits, signed payments, vault reads and the receipt chain head.
 - **Trips:** every run.
 
-**Replay (a link anyone can open):** `node web/scripts/replay.mjs [run-id …]` (with the demo running) builds `web/out/`: the same web app, read-only, with real trips saved as static files. Every payment, refund and refusal still links to its NEAR testnet transaction. Host the folder anywhere (Netlify Drop, Vercel, GitHub Pages; set `NEXT_PUBLIC_BASE_PATH=/<repo>` for a Pages project site).
+**Replay (a link anyone can open):** `node web/scripts/replay.mjs [run-id …]` (with the demo running) builds `web/out/`: the same web app, read-only, with real trips saved as static files. Every payment, refund and refusal still links to its NEAR testnet transaction. Host the folder anywhere (Netlify Drop, Vercel, GitHub Pages; set `NEXT_PUBLIC_BASE_PATH=/<repo>` for a Pages project site). Live copy: [wayfare.autos](https://wayfare.autos). On Vercel, add a `vercel.json` with `{"cleanUrls": true}` so `/run?id=…` and `/trips` load.
 
 The hub (`agent/src/hub.ts`, :7373) runs the agent behind `/api/status`, `/api/runs` (POST to start), `/api/runs/<id>` and `/api/runs/<id>/{approve,cancel,upgrade,disrupt,approve-rebook,end,return,quote}`, and `/api/trips/<id>`. It runs one trip at a time (one browser).
 

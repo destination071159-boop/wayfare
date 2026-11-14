@@ -62,7 +62,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </header>
       {REPLAY && (
         <div className="relative z-30 border-b border-hairline bg-sky px-4 py-2 text-center text-caption text-canvas-white">
-          Replay of real trips on NEAR testnet: every payment, refund and refusal links to its transaction. Buttons are off here: run Wayfare locally (<span className="font-mono">pnpm demo</span>) to book your own.
+          Real trips, booked on NEAR testnet. Click any payment or refusal to see its transaction.
         </div>
       )}
       <div className="relative z-20 flex w-full flex-1 flex-col">
