@@ -1,0 +1,12 @@
+{
+  "name": "wayfare",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "pnpm -C agent install && pnpm -C sites install && pnpm -C web install",
+    "demo": "node demo/run.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1"
+  }
+}

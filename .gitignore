@@ -1,0 +1,11 @@
+.env
+.data/
+node_modules/
+target/
+.next/
+demo-video/
+.next-replay/
+.next-live/
+web/out/
+
+commit.sh
